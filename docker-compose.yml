@@ -1,0 +1,82 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: mongo-container
+    ports: 
+      - "27017:27017"
+    volumes: 
+      - /c/Users/hammad/mongodb-data:/data/db
+    networks:
+      - mynetwork 
+    restart: always
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--username",
+          "admin",
+          "--password",
+          "123456",
+          "--authenticationDatabase",
+          "admin",
+          "--eval",
+          "db.adminCommand('ping')"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  frontend:
+    build:
+      context: ./School---Management-System
+      dockerfile: Dockerfile
+    container_name: frontend-container
+    ports:
+      - "8080:80"
+    networks:
+      - mynetwork
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: always
+    healthcheck:
+     test: ["CMD","wget","--spider","http://localhost:80"]
+     interval: 10s
+     timeout: 5s
+     retries: 5
+     start_period: 20s
+
+
+  backend:
+    build:
+      context: ./Backend-School-Management
+      dockerfile: Dockerfile
+    container_name: backend-container
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+    environment:
+       MONGO_URL: mongodb://admin:123456@mongo-container:27017/SMC?authSource=admin
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+networks:
+  mynetwork:
+volumes:
+  mongodb-data:
