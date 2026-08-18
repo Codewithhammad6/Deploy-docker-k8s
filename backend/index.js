@@ -38,14 +38,6 @@ const getOrigins = () => {
     }
   }
 
-  // Add additional origins from environment variable
-  if (process.env.ADDITIONAL_ORIGINS) {
-    const additionalOrigins = process.env.ADDITIONAL_ORIGINS.split(',')
-      .map(origin => origin.trim())
-      .filter(origin => origin);
-    origins.push(...additionalOrigins);
-  }
-
   // Remove duplicates
   return [...new Set(origins)];
 };

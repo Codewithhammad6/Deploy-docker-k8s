@@ -40,13 +40,6 @@ else
     exit 1
 fi
 
-# Update ADDITIONAL_ORIGINS
-if grep -q "^ADDITIONAL_ORIGINS=" $file_to_find; then
-    sed -i "/^ADDITIONAL_ORIGINS=/d" $file_to_find
-fi
-echo "ADDITIONAL_ORIGINS=\"http://${ipv4_address}:5173,http://localhost:5173,https://wanderlust.vercel.app\"" >> $file_to_find
-echo "✅ ADDITIONAL_ORIGINS updated"
-
 # Restart backend deployment in EKS
 kubectl rollout restart deployment backend
 echo "✅ Backend restarted"
