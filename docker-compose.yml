@@ -35,7 +35,7 @@ services:
 
   frontend:
     build:
-      context: ./School---Management-System
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: frontend-container
     ports:
@@ -56,7 +56,7 @@ services:
 
   backend:
     build:
-      context: ./Backend-School-Management
+      context: ./backend
       dockerfile: Dockerfile
     container_name: backend-container
     ports:
