@@ -23,6 +23,7 @@ const getOrigins = () => {
     "http://localhost:3000",
     "http://10.0.2.2:19000",
     "http://192.168.100.12:19000",
+    "http://smc.local",
   ];
 
   // Add frontend URL from environment variable
@@ -76,7 +77,7 @@ const corsOptions = {
 
 
 
-app.get("/health", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.status(200).json({
     status: "OK"
   });
@@ -97,7 +98,7 @@ app.use(express.json());
 connectDB();
 
 // Routes
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({ 
     message: 'API is runnings...',
     frontendUrl: process.env.FRONTEND_URL || 'Not set',
@@ -106,11 +107,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get("health", (req, res) => {
-  res.status(200).json({
-    status: "OK"
-  });
-});
+
 
 
 // API Routes
