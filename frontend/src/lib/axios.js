@@ -1,10 +1,7 @@
-
-
 import axios from "axios";
-const API_URL = import.meta.env.VITE_BACKEND_URL || '/api';
 
 export const axiosInstance = axios.create({
-   baseURL: API_URL,
+   baseURL: "http://smc.local:9090/api", // Use the backend URL from environment variable
 	withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ const getOrigins = () => {
     "http://localhost:3000",
     "http://10.0.2.2:19000",
     "http://192.168.100.12:19000",
-    "http://smc.local",
+    "http://smc.local:9090",
   ];
 
   // Add frontend URL from environment variable
