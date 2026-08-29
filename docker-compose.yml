@@ -64,7 +64,7 @@ services:
     networks:
       - mynetwork
     environment:
-       MONGO_URL: mongodb://admin:12345@mongo-container:27017/SMC?authSource=admin
+       MONGO_URL: mongodb://admin:123456@mongo-container:27017/SM?authSource=admin
     depends_on:
       mongodb:
         condition: service_healthy
