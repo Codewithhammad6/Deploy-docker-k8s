@@ -7,7 +7,6 @@
 
 echo "🔄 Updating Frontend .env with Backend URL..."
 
-# ============================================
 # 1. Get Backend URL (from EKS)
 # ============================================
 
