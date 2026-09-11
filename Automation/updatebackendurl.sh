@@ -1,7 +1,7 @@
 #!/bin/bash
 # scripts/update-frontend-env.sh
 
-# ============================================
+
 # Update Frontend .env with Backend URL
 # ============================================
 
