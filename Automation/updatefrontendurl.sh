@@ -11,6 +11,7 @@ if [ -z "$NODE_INSTANCE_ID" ]; then
     echo "❌ Could not get node instance ID"
     exit 1
 fi
+
 # Get public IP
 ipv4_address=$(aws ec2 describe-instances --instance-ids $NODE_INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
 
