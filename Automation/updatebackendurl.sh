@@ -56,7 +56,6 @@ cp $file_to_find $file_to_find.backup
 
 # ============================================
 # 3. Update BACKEND_URL for Vite
-# ============================================
 
 if grep -q "^VITE_BACKEND_URL=" $file_to_find; then
     # Update existing VITE_BACKEND_URL
