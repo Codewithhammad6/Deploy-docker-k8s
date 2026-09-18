@@ -35,7 +35,6 @@ echo "🌐 Backend URL: ${BACKEND_URL}"
 
 # ============================================
 # 2. Update Frontend .env file
-# ============================================
 
 # Path to frontend .env file
 file_to_find="../frontend/.env"
