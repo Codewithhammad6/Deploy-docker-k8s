@@ -10,7 +10,7 @@ COPY package*.json ./
 
 RUN npm ci
 
-COPY . ./
+COPY . .
 
 # stage 2
 FROM node:22-slim
