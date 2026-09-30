@@ -2,7 +2,7 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "devCommand": "vite",
-  "installCommand": "npx install",
+  "installCommand": "npm install",
   "framework": "vite",
   "rewrites": [
     {
